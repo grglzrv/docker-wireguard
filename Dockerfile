@@ -1,11 +1,11 @@
-FROM lsiobase/ubuntu:bionic
+FROM lsiobase/ubuntu:arm32v7-bionic
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG WIREGUARD_RELEASE
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="aptalca"
+LABEL build_version="WireGuard version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="Georgi Lazarov"
 
 ENV DEBIAN_FRONTEND="noninteractive"
 
@@ -47,7 +47,7 @@ RUN \
 	| awk '/tag_name/{print $4;exit}' FS='[""]' | awk '{print substr($1,2); }') && \
  curl -o \
 	/tmp/coredns.tar.gz -L \
-	"https://github.com/coredns/coredns/releases/download/v${COREDNS_VERSION}/coredns_${COREDNS_VERSION}_linux_amd64.tgz" && \
+	"https://github.com/coredns/coredns/releases/download/v${COREDNS_VERSION}/coredns_${COREDNS_VERSION}_linux_arm.tgz" && \
  tar xf \
 	/tmp/coredns.tar.gz -C \
 	/app && \

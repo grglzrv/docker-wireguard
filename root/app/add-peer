@@ -18,7 +18,7 @@ if [ -z "$PEERDNS" ] || [ "$PEERDNS" = "auto" ]; then
 fi
 
 for i in {1..254}; do
-  if grep -q "AllowedIPs = ${INTERFACE}.$(( $i + 1 ))/32" /config/wg0.conf; then
+  if grep -q "AllowedIPs = ${INTERFACE}.$(( $i + 11 ))/32" /config/wg0.conf; then
     echo "Peer $i exists"
   else
     echo "Adding new Peer $i"
